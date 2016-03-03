@@ -13,15 +13,11 @@ var guineaPigDisplay = document.getElementById("guinea-pig");
 //  variables of the function (that are used locally, but defined in an enclosing scope) 
 //  with the value or storage location the name was bound to at the time the closure was 
 //  created".
-function reportSectionClicked(sectionArrayElement) {
-  return function() {
-    outputTarget.textContent = "You clicked on the " + sections[sectionArrayElement].textContent + " section";
-  }
-}
 
 // Event listeners for click of any section
 for (var i = 0; i < sections.length; i++) {
-  sections[i].addEventListener("click", reportSectionClicked(i));
+  sections[i].addEventListener("click", function() {outputTarget.textContent = "You clicked on the " + this.textContent + " section";
+});
 }
 
 // Event listener for mouseenter on h1 tag
