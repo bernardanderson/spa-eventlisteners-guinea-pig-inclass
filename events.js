@@ -1,4 +1,6 @@
-var sections = document.getElementsByClassName("article-section");
+// .querySelector selects the first the first instance of the "item".  Can be an element,
+//  .class or #Id etc...
+var article = document.querySelector("article");
 var h1Title = document.getElementById("page-title");
 var inputField = document.getElementById("keypress-input");
 var addColorButton = document.getElementById("add-color");
@@ -8,16 +10,17 @@ var addRoundingButton = document.getElementById("add-rounding");
 var outputTarget = document.getElementById("output-target");
 var guineaPigDisplay = document.getElementById("guinea-pig");
 
-// The returned function is called a closure, "a closure is nothing but a data structure 
-//  storing a function together with an environment, which maps all associating each free 
-//  variables of the function (that are used locally, but defined in an enclosing scope) 
-//  with the value or storage location the name was bound to at the time the closure was 
-//  created".
+// This just adds a single event listener to the article tag.  We will use this to detect
+//  any clicks on it's section children
+article.addEventListener("click", printSection);
 
-// Event listeners for click of any section
-for (var i = 0; i < sections.length; i++) {
-  sections[i].addEventListener("click", function() {outputTarget.textContent = "You clicked on the " + this.textContent + " section";
-});
+// .target is what was actually clicked, .currentTarget is what the event listener is tied to
+//  the .stopPropagation() method, kills the bubbling of the click event.
+function printSection(theParent) {
+  if (theParent.target !== theParent.currentTarget) {
+    outputTarget.textContent = "You clicked on the " + theParent.target.textContent + " section";
+  };
+  theParent.stopPropagation();
 }
 
 // Event listener for mouseenter on h1 tag
