@@ -1,0 +1,28 @@
+.blue-color {
+  color: blue;
+}
+
+.bigger-font {
+  font-size: 2em;
+}
+
+.new-border {
+  border: 2px solid green;
+}
+
+.new-rounding {
+  border-radius: 50px;
+}
+
+article > section:first-child {
+  font-weight: bold;
+}
+
+article > section:last-child {
+  font-weight: bold;
+  font-style: italic;
+}
+
+button {
+  display: block;
+}
